@@ -1,0 +1,116 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="aggiungi(form)" *ngIf="showform">
+    <h1>Cliente</h1>
+
+    <label for="ragioneSociale">Ragione Sociale </label>
+    <input id="ragioneSociale" type="text" formControlName="ragioneSociale">
+
+    <label for="partitaIva">Partita Iva </label>
+    <input id="partitaIva" type="text" formControlName="partitaIva">
+
+    <label for="tipoCliente">Tipo Cliente </label>
+    <!-- <input id="tipoCliente" type="text" formControlName="tipoCliente"> -->
+    <select name="tipoCliente" id="tipoCliente" formControlName="tipoCliente">
+      <option value=""></option>
+      <option value="{{item}}" *ngFor="let item of tipicliente">{{item}}</option>
+    </select>
+
+    <label for="email">Email </label>
+    <input id="email" type="text" formControlName="email">
+
+    <label for="pec">Pec </label>
+    <input id="pec" type="text" formControlName="pec">
+
+    <label for="telefono">Telefono </label>
+    <input id="telefono" type="text" formControlName="telefono">
+
+    <label for="nomeContatto">Nome Contatto </label>
+    <input id="nomeContatto" type="text" formControlName="nomeContatto">
+
+    <label for="cognomeContatto">Cognome Contatto </label>
+    <input id="cognomeContatto" type="text" formControlName="cognomeContatto">
+
+    <label for="telefonoContatto">Telefono Contatto </label>
+    <input id="telefonoContatto" type="text" formControlName="telefonoContatto">
+
+    <label for="emailContatto">Email Contatto </label>
+    <input id="emailContatto" type="text" formControlName="emailContatto">
+    <label for="dataInserimento">Data Inserimento: </label>
+    <input id="dataInserimento" type="date" class=""  formControlName="dataInserimento">
+
+    <label for="dataUltimoContatto">Data Ultimo Contatto</label>
+    <input id="dataUltimoContatto" type="date" class=""  formControlName="dataUltimoContatto">
+
+    <label for="fatturatoAnnuale">Fatturato Annuale</label>
+    <input  id="fatturatoAnnuale" type="number" class=""  formControlName="fatturatoAnnuale">
+
+
+    <div formGroupName="indirizzoSedeOperativa"> <br>
+      <h2>Indirizzo Sede Operativa</h2>
+
+      <label for="via">Via: </label>
+      <input id="via" type="text" formControlName="via">
+
+      <label for="civico">Civico: </label>
+      <input id="civico" type="text" formControlName="civico">
+
+      <label for="cap">Cap</label>
+      <input id="cap"type="text" formControlName="cap">
+
+      <label for="localita">Localita</label>
+      <input id="localita"type="text" formControlName="localita">
+
+      <div formGroupName="comune">
+
+        <label for="id">Nome</label>
+        <select id="id"type="text" formControlName="id" *ngIf="listacomuni">
+          <option value=""></option>
+          <option *ngFor="let item of listacomuni" [attr.selected]="customer && item.id === customer.indirizzoSedeOperativa.comune.id ? true : false" value="{{item.id}}">{{item.nome}} ({{item.provincia.sigla}})</option>
+        </select>
+        <!-- <div formGroupName="provincia">
+
+          <label for="nome">nome</label>
+          <input id="nome"type="text" formControlName="nome">
+
+          <label for="sigla">sigla</label>
+          <input id="sigla"type="text" formControlName="sigla">
+        </div> -->
+
+      </div>
+    </div>
+    <br>
+    <div formGroupName="indirizzoSedeLegale">
+      <h2>Indirizzo Sede Legale</h2>
+
+      <label for="via">Via: </label>
+      <input id="via" type="text" formControlName="via">
+
+      <label for="civico">Civico: </label>
+      <input id="civico" type="text" formControlName="civico">
+
+      <label for="cap">Cap</label>
+      <input id="cap"type="text" formControlName="cap">
+
+      <label for="localita">Localita</label>
+      <input id="localita"type="text" formControlName="localita">
+
+      <div formGroupName="comune">
+
+        <select id="id"type="text" formControlName="id" *ngIf="listacomuni">
+          <option value=""></option>
+          <option *ngFor="let item of listacomuni" [attr.selected]="customer && item.id === customer.indirizzoSedeLegale.comune.id ? true : false" value="{{item.id}}">{{item.nome}} ({{item.provincia.sigla}})</option>
+        </select>
+          <!-- <div formGroupName="provincia">
+          <label for="nome">nome</label>
+          <input id="nome"type="text" formControlName="nome">
+
+          <label for="sigla">sigla</label>
+          <input id="sigla"type="text" formControlName="sigla">
+        </div> -->
+      </div>
+    </div>
+
+    <!-- <input id="fatturatoAnnuale"type="text" formControlName="fatturatoAnnuale"> -->
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+  </div>

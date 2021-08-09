@@ -1,0 +1,24 @@
+/* .card{ width: 700px;
+  height: auto;
+}
+
+.row{
+  justify-content: space-evenly;
+} */
+
+body{
+  background-image: url(../../assets/images/andromeda-via-lattea.jpg);
+  
+}
+
+
+
+#parola{
+  color: white;
+}
+
+ img {
+  max-width: 100%;
+  margin-top: 50px;
+  margin-left: 20px;
+}

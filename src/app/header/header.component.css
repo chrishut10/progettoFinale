@@ -1,0 +1,22 @@
+.navbar a{
+  text-decoration: none;
+  margin-left: 50px;
+  color: white;
+  font-weight: bold;
+}
+.navbar{
+  background-color: black;
+}
+
+button{
+  color: white;
+  background-color: black;
+  border: none;
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+#home{
+ 
+  margin-bottom: 3px
+}

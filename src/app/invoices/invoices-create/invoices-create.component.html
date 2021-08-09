@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"  >
+      <form [formGroup]= "form" name="form" (ngSubmit)="Crea(form)">
+        <h1>Fattura</h1>
+      <div class="mb-3">
+        <label class="form-label"><h4>Data*</h4></label>
+        <input type="text" class="form-control" formControlName="data" id="data" autocomplete="false">
+    </div>
+    <div class="mb-3">
+      <label class="form-label"><h4>Numero*</h4></label>
+      <input type="number" class="form-control" formControlName="numero" id="numero" autocomplete="false">
+  </div>
+    <div class="mb-3">
+      <label class="form-label"><h4>Anno*</h4></label>
+      <input type="number" class="form-control" formControlName="anno" id="anno" autocomplete="false">
+  </div>
+  <div class="mb-3">
+    <label class="form-label "><h4>Importo*</h4></label>
+    <input type="number" class="form-control" formControlName="importo" id="importo" autocomplete="false">
+</div>
+<div formGroupName="stato"><h4>Stato Pagamento*</h4>
+<div class="mb-3">
+  <label class="form-label"></label>
+  <select name="nome" id="nome" formControlName="nome">
+    <option value="PAGATA">PAGATA</option>
+    <option value="NON PAGATA">NON PAGATA</option>
+  </select>
+</div>
+    </div>
+    <button class="btn btn-dark" type="submit">Salva!</button>
+      </form>
+    </div>
+    </div>
+  </div>

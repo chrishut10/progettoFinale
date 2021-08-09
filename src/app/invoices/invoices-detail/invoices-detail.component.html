@@ -1,0 +1,17 @@
+<h1>{{invoice.cliente.ragioneSociale}}{{invoice.cliente.tipoCliente}}-{{invoice.cliente.partitaIva}}-{{invoice.cliente.fatturatoAnnuale}}</h1>
+<form [formGroup]="fattura" (ngSubmit)="updateF(fattura)" *ngIf="showForm">
+
+  <label for="data">Data: </label>
+  <input id="data" type="text" formControlName="data">
+
+  <label for="importo">Importo: </label>
+  <input id="importo" type="text" formControlName="importo">
+
+ <div formGroupName="stato">
+    <label for="nome">Nome: </label>
+    <input id="nome" type="text" formControlName="nome">
+ </div>
+
+  <button type="submit" [disabled]="!fattura.valid">Submit</button>
+</form>
+<pre> {{ invoice| json}}</pre>

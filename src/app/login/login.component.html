@@ -1,0 +1,19 @@
+<div class="form-container">
+  <form name="editform" novalidate id="editform" #editform="ngForm"  (ngSubmit)="login()">
+   <div class="input-container">
+    <div class="input-group">
+      <label for="username">{{'username:' | titlecase}} </label>
+      <input type="text" id="username" #username="ngModel" class="" name="username" [(ngModel)]="person.username" required>
+      <div class="alert  alert-danger" [hidden]="username.valid || username.untouched">Iserisci l'username</div>
+    </div>
+    <div class="input-group">
+      <label for="password">{{'password:' | titlecase}} </label>
+      <input type="password" id="password" #password="ngModel" class="" name="password" [(ngModel)]="person.password" required>
+      <div class="alert  alert-danger" [hidden]="password.valid || password.untouched">Inserisci il plot clown</div>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button type="submit" [disabled]="editform.invalid" >{{'login' | uppercase}}</button>
+  </div>
+  </form>
+</div>

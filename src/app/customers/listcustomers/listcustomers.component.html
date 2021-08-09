@@ -1,0 +1,88 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Sede</th>
+    <th scope="col">Fatturato Annuale</th>
+    <th scope="col">Contatti</th>
+    <th scope="col">Telefono</th>
+    <th scope="col">Tipo Cliente</th>
+    <th scope="col"><button type="button" (click)="nuovo()">nuovo</button></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customers ">
+    <td scope="row">{{ customer.id}}
+    <td>
+      {{customer.nomeContatto}} <br>
+      {{customer.cognomeContatto}}
+    </td>
+    <td>
+      {{customer.indirizzoSedeLegale.via}}
+    </td>
+    <td>
+      {{customer.fatturatoAnnuale}}
+    </td>
+    <td>
+      {{customer.pec}}
+      {{customer.emailContatto}}
+    </td>
+    <td>
+      {{customer.telefono}}
+
+    </td>
+    <td>
+      {{customer.tipoCliente}}
+      {{customer.ragioneSociale}}
+      {{customer.partitaIva}}
+    </td>
+    <td>
+      <button type="button" (click)="goToDetail(customer.id)">modifica</button>
+      <button type="button">elimina</button>
+      <button type="button" (click)="goToFatture(customer.id)">vis. fattura</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-between p-2">
+  <!-- <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="getAllUsers()">
+  </ngb-pagination> -->
+
+  <!-- <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="10" [pageSize]="pageSize" (pageChange)="getAllUsers()" [rotate]="true" [boundaryLinks]="true"></ngb-pagination> -->
+
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [boundaryLinks]="true" (pageChange)="getAllCustomer()">
+    <ng-template ngbPaginationPages let-page let-pages="pages">
+        <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+            <div class="form-group d-flex flex-nowrap px-2">
+              <label
+                  id="paginationInputLabel"
+                  for="paginationInput"
+                  class="col-form-label mr-2 ml-1"
+              >Page</label>
+              <input #i
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  class="form-control custom-pages-input"
+                  id="paginationInput"
+                  [value]="page"
+                  (keyup.enter)="selectPage(i.value)"
+                  (blur)="selectPage(i.value)"
+                  (input)="formatInput($any($event).target)"
+                  aria-labelledby="paginationInputLabel paginationDescription"
+                  style="width: 2.5rem"
+              />
+              <span id="paginationDescription" class="col-form-label text-nowrap px-2">
+                  of {{pages.length}}</span>
+            </div>
+        </li>
+    </ng-template>
+  </ngb-pagination>
+  <hr>
+  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getAllCustomer()">
+    <option [ngValue]="10">10 items per page</option>
+    <option [ngValue]="20">20 items per page</option>
+    <option [ngValue]="50">50 items per page</option>
+  </select>
+</div>

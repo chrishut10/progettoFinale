@@ -1,0 +1,33 @@
+<nav class="navbar  navbar-expand-sm sticky-top " >
+  <a [routerLink]="'/'"  routerLinkActive="active" [routerLinkActiveOptions] ="{exact: true}" class="navbar-brand" href="#" id="home"> Homepage </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item">
+        <a [routerLink]="'/user'" class="nav-link"  [class.disabled]="!authService.isLogged ? true : false">User</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'/customers'" class="nav-link"  [class.disabled]="!authService.isLogged ? true : false">Customer</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'/invoices'" class="nav-link"  [class.disabled]="!authService.isLogged ? true : false">Invoices</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'/signup'" class="nav-link">Signup</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="'/login'" class="nav-link" *ngIf="!authService.isLogged">Login</a>
+      </li>
+      <li class="nav-item">
+        <button (click) = "logout()" *ngIf="authService.isLogged" class="nav-link">Logout</button>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+
